@@ -5,8 +5,8 @@ import { Calculator, User2, Cog } from "lucide-react";
 export const AppLayout = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    const { isTokenValid } = TokenIsValid();
-    if (isTokenValid) {
+    const token = TokenIsValid();
+    if (!token?.isTokenValid) {
       navigate("/auth/sign-in", { replace: true });
     }
   }, [navigate]);
