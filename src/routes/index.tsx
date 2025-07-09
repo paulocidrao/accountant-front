@@ -3,6 +3,7 @@ import { AuthLayout } from "../layout/auth";
 import { Signin } from "../pages/auth/sign-in";
 import { AppLayout } from "@/layout/app";
 import { Home } from "@/pages/home";
+import { Profile } from "@/pages/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,15 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    children: [{ path: "/home", element: <Home /> }],
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/user",
+        element: <Profile />,
+      },
+    ],
   },
 ]);

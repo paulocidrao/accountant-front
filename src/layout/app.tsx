@@ -2,6 +2,11 @@ import { TokenIsValid } from "@/components/functions";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { Calculator, User2, Cog } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 export const AppLayout = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -13,14 +18,24 @@ export const AppLayout = () => {
 
   return (
     <>
-      <main className="min-h-screen flex flex-col items-center justify-center antialiased">
-        <header className="fixed bg-primary p-4 w-full flex top-0 justify-between items-center">
-          <Calculator className="size-16 text-white" />
-          <section className="items-center gap-4 flex">
-            <Cog className="text-white size-8" />
-            <User2 className="text-white size-8" />
-          </section>
-        </header>
+      <header className=" bg-primary p-4 w-full flex top-0 justify-between items-center">
+        <Calculator className="size-16 text-white" />
+        <section className="items-center gap-4 flex">
+          <Tooltip>
+            <TooltipTrigger>
+              <Cog className="text-white size-8" />
+              <TooltipContent side="bottom">Configurações</TooltipContent>
+            </TooltipTrigger>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger>
+              <User2 className="text-white size-8" />
+              <TooltipContent side="bottom">Seu Perfil</TooltipContent>
+            </TooltipTrigger>
+          </Tooltip>
+        </section>
+      </header>
+      <main className="flex flex-col antialiased">
         <Outlet />
       </main>
       <footer className="fixed bottom-0 w-full text-center py-4 bg-white">
