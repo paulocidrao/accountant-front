@@ -13,8 +13,10 @@ import { loginFormSchema, type loginForm } from "@/validators/loginForm";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "@/api/login";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
 export const Signin = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -32,6 +34,7 @@ export const Signin = () => {
     mutationFn: (data: loginForm) => login(data),
     onSuccess: () => {
       toast.success("Login feito com sucesso!", { duration: 2000 });
+      navigate("/home");
     },
     onError: () => {
       toast.error("Opps! Verifique seus dados", { duration: 1000 });
