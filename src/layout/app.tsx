@@ -29,7 +29,10 @@ export const AppLayout = () => {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger>
-              <User2 className="text-white size-8" />
+              <User2
+                className="text-white size-8"
+                onClick={() => navigate("/user")}
+              />
               <TooltipContent side="bottom">Seu Perfil</TooltipContent>
             </TooltipTrigger>
           </Tooltip>
