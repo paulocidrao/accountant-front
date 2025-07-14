@@ -1,12 +1,7 @@
 import { TokenIsValid } from "@/components/functions";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { Calculator, User2, Cog } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Calculator, User2, Cog, Store } from "lucide-react";
 export const AppLayout = () => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -18,24 +13,20 @@ export const AppLayout = () => {
 
   return (
     <>
-      <header className=" bg-primary p-4 w-full flex top-0 justify-between items-center">
+      <header className="bg-primary p-4 w-full flex top-0 justify-between items-center">
         <Calculator className="size-16 text-white" />
         <section className="items-center gap-4 flex">
-          <Tooltip>
-            <TooltipTrigger>
-              <Cog className="text-white size-8" />
-              <TooltipContent side="bottom">Configurações</TooltipContent>
-            </TooltipTrigger>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger>
-              <User2
-                className="text-white size-8"
-                onClick={() => navigate("/user")}
-              />
-              <TooltipContent side="bottom">Seu Perfil</TooltipContent>
-            </TooltipTrigger>
-          </Tooltip>
+          <Store
+            className="text-white size-8 cursor-pointer"
+            onClick={() => navigate("/company")}
+          />
+
+          <Cog className="text-white size-8 cursor-pointer" />
+
+          <User2
+            className="text-white size-8 cursor-pointer"
+            onClick={() => navigate("/user")}
+          />
         </section>
       </header>
       <main className="flex flex-col antialiased ">

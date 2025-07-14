@@ -7,3 +7,7 @@ export const api = ky.extend({
     "Content-Type": "application/json",
   },
 });
+
+export const cepApi = ky.extend({
+  prefixUrl: "https://viacep.com.br/ws",
+});
