@@ -8,22 +8,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "../ui/label";
 import { useMutation } from "@tanstack/react-query";
 import { getCep } from "@/api/get-cep";
+import { createCompany } from "@/api/create-company";
+import { toast } from "sonner";
 
 export const CreateCompanyForm = () => {
   const {
     register,
     setValue,
     getValues,
+    reset,
+    handleSubmit,
     formState: { errors, isValid, isSubmitting },
   } = useForm<createCompanyFormType>({
     resolver: zodResolver(createCompanyFormSchema),
+    mode: "onChange",
     defaultValues: {
       name: "",
-      owner_email: "",
+      email: "",
       document: "",
       phone: "",
       address: {
-        zipCode: "",
+        zipcode: "",
         street: "",
         city: "",
         state: "",
@@ -34,21 +39,38 @@ export const CreateCompanyForm = () => {
   });
 
   const getcepMutation = useMutation({
-    mutationFn: () => getCep(getValues("address.zipCode")),
+    mutationFn: () => getCep(getValues("address.zipcode")),
     onSuccess: response => {
-      console.log("deu certo");
       setValue("address.state", response.estado);
       setValue("address.city", response.localidade);
       setValue("address.street", response.logradouro);
     },
   });
 
+  const createCompanyMutation = useMutation({
+    mutationFn: (data: createCompanyFormType) => createCompany(data),
+    onSuccess() {
+      toast.success("Empresa cadastrada com sucesso!");
+      reset();
+    },
+    onError() {
+      toast.error("Oops! Aconteceu algo de errado!");
+    },
+  });
+
+  const handleCreateCompany = (data: createCompanyFormType) => {
+    createCompanyMutation.mutate(data);
+  };
+
   return (
     <>
       <section className="flex  items-center justify-center">
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 p-6 w-full max-w-2xl bg-white rounded shadow">
+        <form
+          onSubmit={handleSubmit(handleCreateCompany)}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 p-6 w-full max-w-2xl bg-white rounded shadow"
+        >
           <div className="space-y-2">
-            <Label>Nome do responsável</Label>
+            <Label>Nome da empresa</Label>
             <input
               type="text"
               placeholder="digite o nome aqui"
@@ -60,15 +82,15 @@ export const CreateCompanyForm = () => {
             )}
           </div>
           <div className="space-y-2">
-            <Label>Email do responsável</Label>
+            <Label>Email da empresa</Label>
             <input
               type="email"
               placeholder="digite o email aqui"
               className="outline-2 rounded p-2 w-full border"
-              {...register("owner_email")}
+              {...register("email")}
             />
-            {errors.owner_email && (
-              <p className="text-red-500">{errors.owner_email.message}</p>
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
             )}
           </div>
           <div className="space-y-2">
@@ -98,14 +120,14 @@ export const CreateCompanyForm = () => {
           <div className="space-y-2">
             <Label>CEP</Label>
             <input
-              {...register("address.zipCode")}
+              {...register("address.zipcode")}
               type="text"
               placeholder="digite o CEP aqui"
               className="outline-2 rounded p-2 w-full border"
               onBlur={() => getcepMutation.mutate()}
             />
-            {errors.address?.zipCode && (
-              <p className="text-red-500">{errors.address.zipCode.message}</p>
+            {errors.address?.zipcode && (
+              <p className="text-red-500">{errors.address.zipcode.message}</p>
             )}
           </div>
           <div className="space-y-2">
