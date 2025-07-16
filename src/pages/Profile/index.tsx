@@ -1,5 +1,6 @@
 import { deleteUser } from "@/api/delete-user";
 import { getUser, type IGetUser } from "@/api/get-user";
+import { AsscoiateSecretaryFrom } from "@/components/AssociateSecretaryForm";
 import { AssociateUserForm } from "@/components/AssociateUserForm";
 import { CreateUserForm } from "@/components/createUserForm";
 import { Dialog } from "@/components/Dialog";
@@ -67,6 +68,7 @@ export const Profile = () => {
           <section className="flex w-full items-center justify-center gap-16 ">
             <CreateUserForm />
             <AssociateUserForm />
+            {user.role === "adm" && <AsscoiateSecretaryFrom />}
           </section>
         </>
       )}
