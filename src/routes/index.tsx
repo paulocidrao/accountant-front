@@ -5,6 +5,7 @@ import { AppLayout } from "@/layout/app";
 import { Home } from "@/pages/home";
 import { Profile } from "@/pages/Profile";
 import { Company } from "@/pages/company";
+import { Config } from "@/pages/Config";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/company",
         element: <Company />,
+      },
+      {
+        path: "/configurations",
+        element: <Config />,
       },
     ],
   },
