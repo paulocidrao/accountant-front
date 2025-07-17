@@ -2,6 +2,7 @@ import { cookies } from "@/lib/cookies";
 import { api } from "./api-client";
 export interface IGetUser {
   id: string;
+  companyId: string;
   email: string;
   name: string;
   phone: string;

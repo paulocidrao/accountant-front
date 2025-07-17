@@ -6,12 +6,13 @@ import { CreateUserForm } from "@/components/createUserForm";
 import { Dialog } from "@/components/Dialog";
 import { Loading } from "@/components/Loading";
 import { Button } from "@/components/ui/button";
-import { cookies } from "@/lib/cookies";
+import { useLogOut } from "@/hooks/useLogout";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 export const Profile = () => {
+  const logOut = useLogOut();
   const [openDialog, setOpenDialog] = useState(false);
   const navigate = useNavigate();
   const { data: user, isLoading } = useQuery({
@@ -35,12 +36,7 @@ export const Profile = () => {
     return <Loading />;
   }
 
-  const deleteCookies = () => {
-    cookies.remove("Token");
-  };
-
   const handleDeleteUser = () => {
-    console.log("click");
     deleteUserMutation.mutate();
   };
 
@@ -55,10 +51,7 @@ export const Profile = () => {
         <Button
           className="w-20 font-bold"
           variant="destructive"
-          onClick={() => {
-            navigate("/auth/sign-in");
-            deleteCookies();
-          }}
+          onClick={logOut}
         >
           Sair
         </Button>

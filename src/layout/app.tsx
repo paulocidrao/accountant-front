@@ -21,7 +21,10 @@ export const AppLayout = () => {
             onClick={() => navigate("/company")}
           />
 
-          <Cog className="text-white size-8 cursor-pointer" />
+          <Cog
+            className="text-white size-8 cursor-pointer"
+            onClick={() => navigate("/configurations")}
+          />
 
           <User2
             className="text-white size-8 cursor-pointer"
