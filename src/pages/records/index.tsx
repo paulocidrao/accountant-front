@@ -1,4 +1,5 @@
 import { CreateRecordsForm } from "@/components/CreateRecords";
+import { ListMoney } from "@/components/ListMoney";
 
 export const Records = () => {
   return (
@@ -8,6 +9,7 @@ export const Records = () => {
       </section>
       <section>
         <CreateRecordsForm />
+        <ListMoney />
       </section>
     </>
   );

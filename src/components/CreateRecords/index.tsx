@@ -12,7 +12,6 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import { useState } from "react";
 import type { MoneyType } from "@/@types/moneyArray";
 import {
   Form,
@@ -25,10 +24,10 @@ import {
 import { useForm } from "react-hook-form";
 import { formMoneySchema, type formMoneyType } from "@/validators/createRecord";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ListMoneys } from "../ListMoneys";
+import { useRecordContext } from "@/contexts/RecordsContext/useRecordContext";
 
 export const CreateRecordsForm = () => {
-  const [moneys, setMoneys] = useState<MoneyType[]>([]);
+  const { setMoney, money } = useRecordContext();
 
   const formMoney = useForm<formMoneyType>({
     resolver: zodResolver(formMoneySchema),
@@ -44,7 +43,7 @@ export const CreateRecordsForm = () => {
       quantity: Number(data.quantity),
       type: data.denomination > "1" ? "nota" : "moeda",
     };
-    setMoneys([...moneys, newMoney]);
+    setMoney([...money, newMoney]);
     formMoney.reset({
       denomination: "",
       quantity: "0",
@@ -125,13 +124,6 @@ export const CreateRecordsForm = () => {
           </form>
         </Form>
       </section>
-      {moneys.length > 1 && (
-        <>
-          {moneys.map(item => {
-            <ListMoneys key={item.quantity} allMoney={item} />;
-          })}
-        </>
-      )}
     </>
   );
 };

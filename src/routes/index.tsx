@@ -6,7 +6,7 @@ import { Home } from "@/pages/home";
 import { Profile } from "@/pages/Profile";
 import { Company } from "@/pages/company";
 import { Config } from "@/pages/Config";
-import { Records } from "@/pages/records";
+import { Records } from "@/pages/Records";
 
 export const router = createBrowserRouter([
   {
