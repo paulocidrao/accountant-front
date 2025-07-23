@@ -1,0 +1,14 @@
+export const Money = [
+  { id: "0.05", name: "Cinco centavos", value: "0.05", type: "moeda" },
+  { id: "0.1", name: "Dez centavos", value: "0.1", type: "moeda" },
+  { id: "0.25", name: "Vinte e cinco centavos", value: "0.25", type: "moeda" },
+  { id: "0.5", name: "Cinquenta centavos", value: "0.5", type: "moeda" },
+  { id: "1", name: "Um real", value: "1", type: "moeda" },
+  { id: "2", name: "Dois reais", value: "2", type: "nota" },
+  { id: "5", name: "Cinco reais", value: "5", type: "nota" },
+  { id: "10", name: "Dez reais", value: "10", type: "nota" },
+  { id: "20", name: "Vinte reais", value: "20", type: "nota" },
+  { id: "50", name: "Cinquenta reais", value: "50", type: "nota" },
+  { id: "100", name: "Cem reais", value: "100", type: "nota" },
+  { id: "200", name: "Duzentos reais", value: "200", type: "nota" },
+];

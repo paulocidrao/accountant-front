@@ -1,4 +1,4 @@
-import { TokenIsValid } from "@/components/functions";
+import { TokenIsValid } from "@/functions";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { Calculator, User2, Cog, Store } from "lucide-react";
