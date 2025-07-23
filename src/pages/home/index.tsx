@@ -1,3 +1,4 @@
+import { ListRegister } from "@/components/ListRegiters";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 
@@ -11,6 +12,7 @@ export const Home = () => {
           Criar novo registro
         </Button>
       </section>
+      <ListRegister />
     </>
   );
 };
