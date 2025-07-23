@@ -11,7 +11,7 @@ export const TokenIsValid = () => {
   if (tokenData && typeof tokenData === "object" && "token" in tokenData) {
     const actualTokenString = tokenData.token;
     const payload = jwtDecode<payload>(actualTokenString);
-    const isTokenValid = payload.exp > currentTime; // Corrigido aqui
+    const isTokenValid = payload.exp > currentTime;
     return { isTokenValid };
   }
 };
