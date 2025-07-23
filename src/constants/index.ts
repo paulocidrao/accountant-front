@@ -1,5 +1,4 @@
 export const Money = [
-  { id: "0.01", name: "Um centavo", value: "0.01", type: "moeda" },
   { id: "0.05", name: "Cinco centavos", value: "0.05", type: "moeda" },
   { id: "0.1", name: "Dez centavos", value: "0.1", type: "moeda" },
   { id: "0.25", name: "Vinte e cinco centavos", value: "0.25", type: "moeda" },
