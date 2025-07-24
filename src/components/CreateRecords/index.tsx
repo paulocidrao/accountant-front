@@ -53,6 +53,7 @@ export const CreateRecordsForm = () => {
 
   const handleinfoFormMoney = (data: formMoneyType) => {
     const newMoney: MoneyType = {
+      id: Date.now().toString(),
       denomination: data.denomination,
       quantity: Number(data.quantity),
       type: data.denomination > "1" ? "nota" : "moeda",
