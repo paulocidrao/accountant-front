@@ -16,8 +16,8 @@ export interface IcreateCompany {
   };
 }
 
-const tokenValue = cookies.get("Token");
 export const createCompany = async (data: IcreateCompany) => {
+  const tokenValue = await cookies.get("Token");
   const result = await api.post("company/create", {
     body: JSON.stringify(data),
     headers: {

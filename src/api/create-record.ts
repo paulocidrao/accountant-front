@@ -6,8 +6,8 @@ export interface ICreateRecords {
   name: string;
   description: string;
 }
-const tokenValue = cookies.get("Token");
 export const createRecords = async (data: ICreateRecords) => {
+  const tokenValue = await cookies.get("Token");
   const result = await api.post("bill/create", {
     body: JSON.stringify(data),
     headers: {

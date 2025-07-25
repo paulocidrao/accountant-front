@@ -11,9 +11,12 @@ import { useState } from "react";
 export const ListRegister = () => {
   const [search, setSearch] = useState("");
   const { data: registers, isLoading } = useQuery<IGetAllRegistersResponse[]>({
-    initialData: [] as IGetAllRegistersResponse[],
+    initialData: [],
+    placeholderData: [],
     queryKey: ["registers"],
     queryFn: () => getAllRegisters(),
+    refetchOnMount: true,
+    enabled: true,
   });
 
   if (isLoading) {
@@ -39,6 +42,7 @@ export const ListRegister = () => {
         {filterRegisters.map(resgister => (
           <>
             <div
+              key={resgister.id}
               className={`${
                 filterRegisters.length < 4 ? "h-1/2" : "h-full"
               }  w-full  flex flex-col items-start gap-3 rounded-lg border p-4 shadow-sm bg-white sm:p-3 md:p-4 lg:p-5`}

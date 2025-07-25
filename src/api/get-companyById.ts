@@ -1,8 +1,6 @@
 import { cookies } from "@/lib/cookies";
 import { api } from "./api-client";
 
-const tokenValue = cookies.get("Token");
-
 export interface IGetCompanyIdResponse {
   id: string;
   name: string;
@@ -20,6 +18,7 @@ export interface IGetCompanyIdResponse {
 }
 
 export const getCompanyById = async (id: string) => {
+  const tokenValue = await cookies.get("Token");
   const result = await api
     .get(`company/list/${id}`, {
       headers: {
