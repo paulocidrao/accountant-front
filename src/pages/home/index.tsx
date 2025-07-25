@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 
 export const Home = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <section className="p-4 w-full flex items-center justify-between">

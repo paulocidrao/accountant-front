@@ -12,8 +12,8 @@ export interface IGetAllRegistersResponse {
     denomination: string;
   }>;
 }
-const tokenValue = cookies.get("Token");
 export const getAllRegisters = async () => {
+  const tokenValue = await cookies.get("Token");
   const result = await api
     .get("bill/list", {
       headers: {
@@ -21,6 +21,5 @@ export const getAllRegisters = async () => {
       },
     })
     .json<IGetAllRegistersResponse[]>();
-
   return result;
 };

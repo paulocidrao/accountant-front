@@ -6,9 +6,8 @@ export interface associateSecretaryRequest {
   companyEmail: string;
 }
 
-const tokenValue = cookies.get("Token");
-
 export const associateSecretary = async (data: associateSecretaryRequest) => {
+  const tokenValue = cookies.get("Token");
   const result = await api.put("user/secretary/associate", {
     body: JSON.stringify(data),
     headers: {

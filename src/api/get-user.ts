@@ -8,9 +8,9 @@ export interface IGetUser {
   phone: string;
   role: "adm" | "counselor" | "secretary";
 }
-const tokenValue = cookies.get("Token");
 
 export const getUser = async () => {
+  const tokenValue = await cookies.get("Token");
   const result = await api
     .get("user/me", {
       headers: {
