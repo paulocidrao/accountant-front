@@ -14,6 +14,7 @@ import { toast } from "sonner";
 export const Profile = () => {
   const logOut = useLogOut();
   const [openDialog, setOpenDialog] = useState(false);
+  const [openExitDialog, setOpenExitDialog] = useState(false);
   const navigate = useNavigate();
   const { data: user, isLoading } = useQuery({
     initialData: {} as IGetUser,
@@ -39,53 +40,64 @@ export const Profile = () => {
   const handleDeleteUser = () => {
     deleteUserMutation.mutate();
   };
+  const handleLogoutUser = () => {
+    logOut();
+  };
 
   return (
     <>
-      <section className=" h-full w-full  flex p-4 items-center justify-between">
+      <section className="w-full flex p-4 items-center justify-between">
         {user.name ? (
-          <h1 className="text-2xl ">Olá {user.name}</h1>
+          <h1 className="text-2xl">Olá, {user.name}</h1>
         ) : (
-          <h1 className="text-2xl ">Bem-vindo novamente</h1>
+          <h1 className="text-2xl">Bem-vindo novamente</h1>
         )}
         <Button
           className="w-20 font-bold"
-          variant="destructive"
-          onClick={logOut}
+          variant="default"
+          onClick={() => setOpenExitDialog(prev => !prev)}
         >
           Sair
         </Button>
       </section>
       {user.role !== "counselor" && (
         <>
-          <section className="flex w-full items-center justify-center gap-16 ">
+          <section className="flex flex-col md:flex-row items-center-safe justify-center-safe gap-16">
             <CreateUserForm />
             <AssociateUserForm />
             {user.role === "adm" && <AsscoiateSecretaryFrom />}
           </section>
         </>
       )}
-      <section className="bg-red-50 border mb-16 border-red-200 rounded-lg p-6 mt-8 flex flex-col items-center shadow-sm max-w-md mx-auto">
+      <section className="bg-red-50 border mb-16 border-red-200 rounded-lg p-6 mt-16 flex flex-col items-center shadow-sm w-sm mx-auto">
         <h3 className="text-xl font-semibold text-red-700 mb-2">
-          Deletar sua conta
+          Excluir sua conta
         </h3>
         <span className="text-sm text-red-600 mb-4 text-center">
-          Ao deletar, todas as suas informações serão excluídas permanentemente!
+          Se você excluir sua conta, todos os seus dados serão apagados e não
+          poderão ser recuperados. Tem certeza que deseja continuar?
         </span>
         <Button
           variant="destructive"
           className="w-full font-bold"
           onClick={() => setOpenDialog(prev => !prev)}
         >
-          Deletar Conta
+          Excluir Conta
         </Button>
       </section>
       <Dialog
-        description="Você tem certeza disso ? "
+        description="Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita."
         open={openDialog}
         setOpen={setOpenDialog}
         onAction={handleDeleteUser}
-        title="Você quer realmente deletar a sua conta?"
+        title="Excluir conta"
+      />
+      <Dialog
+        description="Você está prestes a sair da sua conta. Para voltar, basta fazer login novamente."
+        open={openExitDialog}
+        setOpen={setOpenExitDialog}
+        onAction={handleLogoutUser}
+        title="Sair da conta"
       />
     </>
   );

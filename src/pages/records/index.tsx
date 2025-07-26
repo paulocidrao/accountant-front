@@ -6,7 +6,7 @@ export const Records = () => {
   const total = useTotalMoney();
   return (
     <>
-      <section className="w-full flex items-center justify-between p-4">
+      <section className="w-full  flex items-center justify-between p-4">
         <h1 className="text-2xl font-semibold">Cadastre um novo registro</h1>
         <span className="text-green-500 font-black text-2xl">
           Quantidade total: {total}{" "}

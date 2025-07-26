@@ -46,10 +46,12 @@ export const AsscoiateSecretaryFrom = () => {
   return (
     <>
       <form
-        className="space-y-4"
+        className="space-y-4 w-1/2 md:w-1/6 "
         onSubmit={handleSubmit(handleAssociateSecretary)}
       >
-        <h2>Associe um secretario(a)</h2>
+        <h2 className="text-lg font-semibold text-center">
+          Associe um secretario(a)
+        </h2>
         <div className="grid gap-4">
           <Label>Email do secretario(a)</Label>
           <input

@@ -44,10 +44,10 @@ export const CreateUserForm = () => {
   return (
     <>
       <form
-        className=" flex-col space-y-4 w-1/6"
+        className=" flex-col space-y-4 md:w-1/6 w-1/2 "
         onSubmit={handleSubmit(handleFormSubmit)}
       >
-        <h2>Cadastre um usuário</h2>
+        <h2 className="font-semibold">Cadastre um usuário</h2>
         <div className="grid gap-4">
           <Label htmlFor="name">Nome completo</Label>
           <input
