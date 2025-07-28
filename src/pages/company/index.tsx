@@ -1,4 +1,5 @@
 import { getUser, type IGetUser } from "@/api/get-user";
+import { BackButton } from "@/components/BackButton";
 import { CreateCompanyForm } from "@/components/CreateCompanyForm";
 import { Loading } from "@/components/Loading";
 import { useQuery } from "@tanstack/react-query";
@@ -14,8 +15,9 @@ export const Company = () => {
   }
   return (
     <>
-      <section className="w-full p-4">
+      <section className="w-full p-4 flex items-center justify-between">
         <h1 className="text-2xl">Olá,{user.name}</h1>
+        <BackButton />
       </section>
       <section>{user.role === "adm" && <CreateCompanyForm />}</section>
     </>

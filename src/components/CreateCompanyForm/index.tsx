@@ -64,10 +64,11 @@ export const CreateCompanyForm = () => {
 
   return (
     <>
-      <section className="flex  items-center justify-center">
+      <section className="flex flex-col items-center justify-center">
+        <h2 className="font-semibold text-2xl">Cadastre uma empresa</h2>
         <form
           onSubmit={handleSubmit(handleCreateCompany)}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 p-6 w-full max-w-2xl bg-white rounded shadow"
+          className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-x-6 gap-y-4 p-6 w-full max-w-2xl bg-white rounded shadow"
         >
           <div className="space-y-2">
             <Label>Nome da empresa</Label>
@@ -187,7 +188,7 @@ export const CreateCompanyForm = () => {
               className="outline-2 rounded p-2 w-full border"
             />
           </div>
-          <div className="col-span-1 md:col-span-2 flex justify-end mt-4 w-full">
+          <div className="col-span-1 md:col-span-2 sm:col-span-2 flex justify-end mt-4 w-full">
             <Button
               disabled={!isValid || isSubmitting}
               type="submit"
