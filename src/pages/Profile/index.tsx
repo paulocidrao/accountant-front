@@ -2,6 +2,7 @@ import { deleteUser } from "@/api/delete-user";
 import { getUser, type IGetUser } from "@/api/get-user";
 import { AsscoiateSecretaryFrom } from "@/components/AssociateSecretaryForm";
 import { AssociateUserForm } from "@/components/AssociateUserForm";
+import { BackButton } from "@/components/BackButton";
 import { CreateUserForm } from "@/components/createUserForm";
 import { Dialog } from "@/components/Dialog";
 import { Loading } from "@/components/Loading";
@@ -52,13 +53,16 @@ export const Profile = () => {
         ) : (
           <h1 className="text-2xl">Bem-vindo novamente</h1>
         )}
-        <Button
-          className="w-20 font-bold"
-          variant="default"
-          onClick={() => setOpenExitDialog(prev => !prev)}
-        >
-          Sair
-        </Button>
+        <div className="gap-5 flex items-center justify-center">
+          <BackButton />
+          <Button
+            className="w-20 font-bold"
+            variant="destructive"
+            onClick={() => setOpenExitDialog(prev => !prev)}
+          >
+            Sair
+          </Button>
+        </div>
       </section>
       {user.role !== "counselor" && (
         <>

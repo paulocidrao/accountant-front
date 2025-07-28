@@ -17,6 +17,7 @@ import { getCep } from "@/api/get-cep";
 import { updateCompany } from "@/api/update-company";
 import { toast } from "sonner";
 import { queryClient } from "@/lib/react-query";
+import { BackButton } from "../BackButton";
 
 interface UpdateCompanyFormProps {
   id: string;
@@ -92,11 +93,14 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
 
   return (
     <>
-      <h1 className="text-2xl w-full p-4 font-semibold items-start">
-        Atualize o cadastro da empresa
-      </h1>
+      <section className="flex w-full items-center justify-between p-2 mt-2">
+        <h1 className="text-2xl w-full p-4 font-semibold items-start">
+          Atualize o cadastro da empresa
+        </h1>
+        <BackButton />
+      </section>
       <form
-        className="space-y-4 grid grid-cols-2 gap-4 items-center justify-center"
+        className="space-y-4 grid grid-cols-2 gap-4 p-4 items-center justify-center"
         onSubmit={handleSubmit(handleUpdateCompany)}
       >
         <div className="space-y-2">
@@ -166,7 +170,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
             className="outline-2 rounded p-2 w-full border"
           />
         </div>
-        <div className="col-span-1 md:col-span-2 flex justify-end mt-4 w-full">
+        <div className="col-span-2 md:col-span-2 flex justify-end mt-4 w-full">
           <Button
             type="submit"
             disabled={isSubmitting}
