@@ -1,5 +1,6 @@
 import type { payload } from "@/@types/jwtPaylod";
 import { cookies } from "@/lib/cookies";
+import dayjs from "dayjs";
 import { jwtDecode } from "jwt-decode";
 
 export const TokenIsValid = () => {
@@ -14,4 +15,8 @@ export const TokenIsValid = () => {
     const isTokenValid = payload.exp > currentTime;
     return { isTokenValid };
   }
+};
+
+export const transformDate = (date: string) => {
+  return dayjs(date).format("DD/MM/YYYY");
 };

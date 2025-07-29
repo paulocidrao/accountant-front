@@ -4,6 +4,7 @@ export interface IGetAllRegistersResponse {
   id: string;
   name: string;
   description: string;
+  createdAt: string;
   counselorName: string;
   moneys: Array<{
     type: "Nota" | "Moeda";
