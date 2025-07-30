@@ -7,6 +7,7 @@ import { CreateUserForm } from "@/components/createUserForm";
 import { Dialog } from "@/components/Dialog";
 import { Loading } from "@/components/Loading";
 import { Button } from "@/components/ui/button";
+import { UpdateUserAccount } from "@/components/UpdateUserAccount";
 import { useLogOut } from "@/hooks/useLogout";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -73,6 +74,7 @@ export const Profile = () => {
           </section>
         </>
       )}
+      {user.role !== "adm" && <UpdateUserAccount />}
       <section className="bg-red-50 border mb-16 border-red-200 rounded-lg p-6 mt-16 flex flex-col items-center shadow-sm w-sm mx-auto">
         <h3 className="text-xl font-semibold text-red-700 mb-2">
           Excluir sua conta
