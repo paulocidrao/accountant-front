@@ -13,7 +13,7 @@ import { loginFormSchema, type loginForm } from "@/validators/loginForm";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "@/api/login";
 import { toast } from "sonner";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export const Signin = () => {
   const navigate = useNavigate();
@@ -73,12 +73,12 @@ export const Signin = () => {
                 <div className="grid gap-4">
                   <div className="flex items-center">
                     <Label htmlFor="password">Senha</Label>
-                    <a
-                      href="#"
+                    <Link
+                      to="/auth/forgotPassword"
                       className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                     >
                       Esqueceu sua senha?
-                    </a>
+                    </Link>
                   </div>
                   <input
                     {...register("password")}
