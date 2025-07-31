@@ -57,13 +57,13 @@ export const UpdateUserAccount = () => {
   }
   return (
     <>
-      <section className="flex w-full items-center justify-center p-2 mt-2">
+      <section className="flex w-full md:w-1/4 lg:w-1/3 xl:w-1/4 2xl:w-1/6 items-center justify-center p-2 mt-2">
         <form
-          className="space-y-4 w-1/5"
+          className="space-y-4 w-full max-w-md"
           onSubmit={handleSubmit(handleUpdateUser)}
         >
-          <h2 className="font-semibold text-xl">Atualize os seus dados</h2>
-          <div className="space-y-2 ">
+          <h2 className="font-semibold text-xl">Atualize seus dados</h2>
+          <div className="space-y-2">
             <Label className="text-sm font-semibold">Email:</Label>
             <input
               className="p-1.5 outline-2 rounded w-full"

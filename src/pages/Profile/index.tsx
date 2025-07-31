@@ -5,6 +5,7 @@ import { AssociateUserForm } from "@/components/AssociateUserForm";
 import { BackButton } from "@/components/BackButton";
 import { CreateUserForm } from "@/components/createUserForm";
 import { Dialog } from "@/components/Dialog";
+import { ForgotPassword } from "@/components/ForgotPassword";
 import { Loading } from "@/components/Loading";
 import { Button } from "@/components/ui/button";
 import { UpdateUserAccount } from "@/components/UpdateUserAccount";
@@ -70,11 +71,12 @@ export const Profile = () => {
           <section className="flex flex-col md:flex-row items-center-safe justify-center-safe gap-16">
             <CreateUserForm />
             <AssociateUserForm />
+            {user.role !== "adm" && <UpdateUserAccount />}
             {user.role === "adm" && <AsscoiateSecretaryFrom />}
+            <ForgotPassword />
           </section>
         </>
       )}
-      {user.role !== "adm" && <UpdateUserAccount />}
       <section className="bg-red-50 border mb-16 border-red-200 rounded-lg p-6 mt-16 flex flex-col items-center shadow-sm w-sm mx-auto">
         <h3 className="text-xl font-semibold text-red-700 mb-2">
           Excluir sua conta
