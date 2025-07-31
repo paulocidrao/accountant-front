@@ -7,12 +7,19 @@ import { Profile } from "@/pages/Profile";
 import { Company } from "@/pages/company";
 import { Config } from "@/pages/Config";
 import { Records } from "@/pages/records";
+import { ForgotPassword } from "@/pages/ForgotPassword";
 
 export const router = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthLayout />,
-    children: [{ path: "sign-in", element: <Signin /> }],
+    children: [
+      { path: "sign-in", element: <Signin /> },
+      {
+        path: "forgotPassword",
+        element: <ForgotPassword />,
+      },
+    ],
   },
   {
     path: "/",
