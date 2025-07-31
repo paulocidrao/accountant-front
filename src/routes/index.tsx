@@ -8,6 +8,7 @@ import { Company } from "@/pages/company";
 import { Config } from "@/pages/Config";
 import { Records } from "@/pages/records";
 import { ForgotPassword } from "@/pages/ForgotPassword";
+import { NotFound } from "@/pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -46,5 +47,9 @@ export const router = createBrowserRouter([
         element: <Records />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
