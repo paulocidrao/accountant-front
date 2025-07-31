@@ -46,11 +46,11 @@ export const Signin = () => {
   };
   return (
     <>
-      <section className="w-full flex flex-col gap-7 items-center justify-center">
-        <h1 className="text-2xl font-bold">Bem-vindo!</h1>
-        <Card className="w-1/4 max-w-full shadow-2xl">
+      <section className="w-full p-4 flex flex-col gap-7 items-center justify-center">
+        <h1 className="text-2xl lg:text-2xl font-bold">Bem-vindo!</h1>
+        <Card className="w-full sm:w-1/2 lg:w-1/4 max-w-full shadow-2xl">
           <CardHeader>
-            <CardTitle>Faça login na sua conta!</CardTitle>
+            <CardTitle className="">Faça login na sua conta!</CardTitle>
             <CardDescription>
               Use seu email e sua senha logo abaixo!
             </CardDescription>
@@ -64,7 +64,7 @@ export const Signin = () => {
                     {...register("email")}
                     type="email"
                     placeholder="seu@email.com"
-                    className="outline-3 rounded p-1"
+                    className="outline-3 rounded p-1 w-full"
                   />
                   {errors.email?.message && (
                     <p className="text-red-500">{errors.email?.message}</p>
@@ -83,7 +83,7 @@ export const Signin = () => {
                   <input
                     {...register("password")}
                     type="password"
-                    className="outline-3 rounded p-1"
+                    className="outline-3 rounded p-1 w-full"
                     placeholder="Digite sua senha"
                   />
                 </div>
