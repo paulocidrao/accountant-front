@@ -12,6 +12,7 @@ import {
   type associateSecretaryRequest,
 } from "@/api/associate-secretary";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const AsscoiateSecretaryFrom = () => {
   const {
@@ -77,7 +78,13 @@ export const AsscoiateSecretaryFrom = () => {
           )}
         </div>
         <Button disabled={isSubmitting} className="w-full font-bold">
-          Associar
+          {isSubmitting ? (
+            <div className="flex  items-center justify-center">
+              <Loader2 className="size-6 animate-spin text-white" />
+            </div>
+          ) : (
+            "Associar"
+          )}
         </Button>
       </form>
     </>

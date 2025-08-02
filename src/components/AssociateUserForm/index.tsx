@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { associateUser } from "@/api/associate-user";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const AssociateUserForm = () => {
   const {
@@ -57,7 +58,13 @@ export const AssociateUserForm = () => {
         )}
       </div>
       <Button disabled={isSubmitting} className="font-bold w-full">
-        Associar
+        {isSubmitting ? (
+          <div className="flex  items-center justify-center">
+            <Loader2 className="size-6 animate-spin text-white" />
+          </div>
+        ) : (
+          "Associar"
+        )}
       </Button>
     </form>
   );

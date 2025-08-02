@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { updateUserPassword } from "@/api/update-userPassword";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const ForgotPassword = () => {
   const {
@@ -54,7 +55,7 @@ export const ForgotPassword = () => {
           <input
             className="p-1.5 outline-2 rounded w-full"
             {...register("email")}
-            placeholder="digite o email do usuário"
+            placeholder="Digite o email do usuário"
           />
         </div>
         <div className="space-y-1.5">
@@ -62,14 +63,20 @@ export const ForgotPassword = () => {
           <input
             {...register("newPassword")}
             className="p-1.5 outline-2 rounded w-full"
-            placeholder="digite a nova senha"
+            placeholder="Digite a nova senha"
           />
         </div>
         <Button
           disabled={isSubmitting || !isValid}
           className="w-full font-bold disabled:cursor-not-allowed"
         >
-          Atualizar senha
+          {isSubmitting ? (
+            <div className="flex  items-center justify-center">
+              <Loader2 className="size-6 animate-spin text-white" />
+            </div>
+          ) : (
+            "Atualizar senha"
+          )}
         </Button>
       </form>
     </section>

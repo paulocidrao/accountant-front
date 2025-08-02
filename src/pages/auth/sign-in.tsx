@@ -14,6 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "@/api/login";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router";
+import { Loader2 } from "lucide-react";
 
 export const Signin = () => {
   const navigate = useNavigate();
@@ -94,7 +95,13 @@ export const Signin = () => {
                   disabled={!isValid || isSubmitting}
                   className="w-full font-bold text-md"
                 >
-                  Entrar
+                  {isSubmitting ? (
+                    <div className="flex  items-center justify-center">
+                      <Loader2 className="size-6 animate-spin text-white" />
+                    </div>
+                  ) : (
+                    "Entrar"
+                  )}
                 </Button>
               </div>
             </form>
