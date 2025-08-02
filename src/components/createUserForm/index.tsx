@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { createUser } from "@/api/create-user";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const CreateUserForm = () => {
   const {
@@ -53,7 +54,7 @@ export const CreateUserForm = () => {
           <input
             className="outline-2 rounded p-1"
             type="text"
-            placeholder="digite o nome completo"
+            placeholder="Digite o nome completo"
             {...register("name")}
           />
           {errors.name?.message && (
@@ -66,7 +67,7 @@ export const CreateUserForm = () => {
             {...register("email")}
             className="outline-2 rounded p-1"
             type="email"
-            placeholder="digite o email"
+            placeholder="Digite o email"
           />
           {errors.email?.message && (
             <p className="text-red-500">{errors.email.message}</p>
@@ -78,7 +79,7 @@ export const CreateUserForm = () => {
             {...register("phone")}
             className="outline-2 rounded p-1"
             type="text"
-            placeholder="digite o telefone"
+            placeholder="Digite o telefone"
           />
           {errors.phone?.message && (
             <p className="text-red-500">{errors.phone.message}</p>
@@ -100,7 +101,13 @@ export const CreateUserForm = () => {
           disabled={!isValid || isSubmitting}
           className="font-bold w-full"
         >
-          Cadastrar
+          {isSubmitting ? (
+            <div className="flex  items-center justify-center">
+              <Loader2 className="size-6 animate-spin text-white" />
+            </div>
+          ) : (
+            "Cadastrar"
+          )}
         </Button>
       </form>
     </>

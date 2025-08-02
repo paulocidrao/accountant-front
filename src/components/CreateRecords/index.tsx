@@ -180,7 +180,7 @@ export const CreateRecordsForm = () => {
                   <FormLabel>Quantidade</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="digite um núemro maior que 0"
+                      placeholder="Digite um núemro maior que 0"
                       {...field}
                     />
                   </FormControl>

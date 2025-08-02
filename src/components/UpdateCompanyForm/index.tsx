@@ -18,6 +18,7 @@ import { updateCompany } from "@/api/update-company";
 import { toast } from "sonner";
 import { queryClient } from "@/lib/react-query";
 import { BackButton } from "../BackButton";
+import { Loader2 } from "lucide-react";
 
 interface UpdateCompanyFormProps {
   id: string;
@@ -120,7 +121,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
             {...register("address.zipcode")}
             type="text"
             maxLength={8}
-            placeholder="digite o CEP aqui"
+            placeholder="Digite o CEP aqui"
             className="outline-2 rounded p-2 w-full border"
             onBlur={() => getcepMutation.mutate()}
           />
@@ -130,7 +131,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
           <input
             type="text"
             {...register("address.street")}
-            placeholder="digite a rua aqui"
+            placeholder="Digite a rua aqui"
             className="outline-2 rounded p-2 w-full border"
           />
         </div>
@@ -139,7 +140,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
           <input
             type="text"
             {...register("address.city")}
-            placeholder="digite a cidade aqui"
+            placeholder="Digite a cidade aqui"
             className="outline-2 rounded p-2 w-full border"
           />
         </div>
@@ -148,7 +149,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
           <input
             type="text"
             {...register("address.state")}
-            placeholder="digite o Estado aqui"
+            placeholder="Digite o Estado aqui"
             className="outline-2 rounded p-2 w-full border"
           />
         </div>
@@ -157,7 +158,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
           <input
             type="text"
             {...register("address.number")}
-            placeholder="digite o número aqui"
+            placeholder="Digite o número aqui"
             className="outline-2 rounded p-2 w-full border"
           />
         </div>
@@ -166,7 +167,7 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
           <input
             type="text"
             {...register("address.complement")}
-            placeholder="digite o complemento aqui"
+            placeholder="Digite o complemento aqui"
             className="outline-2 rounded p-2 w-full border"
           />
         </div>
@@ -176,7 +177,13 @@ export const UpdateCompanyForm = ({ id }: UpdateCompanyFormProps) => {
             disabled={isSubmitting}
             className="w-full font-bold disabled:cursor-not-allowed"
           >
-            Atualizar
+            {isSubmitting ? (
+              <div className="flex  items-center justify-center">
+                <Loader2 className="size-6 animate-spin text-white" />
+              </div>
+            ) : (
+              "Atualizar"
+            )}
           </Button>
         </div>
       </form>

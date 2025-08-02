@@ -12,6 +12,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateUser } from "@/api/update_user";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const UpdateUserAccount = () => {
   const {
@@ -68,7 +69,7 @@ export const UpdateUserAccount = () => {
             <input
               className="p-1.5 outline-2 rounded w-full"
               {...register("email")}
-              placeholder="digite seu email"
+              placeholder="Digite seu email"
             />
           </div>
           <div className="space-y-1.5">
@@ -76,14 +77,20 @@ export const UpdateUserAccount = () => {
             <input
               {...register("phone")}
               className="p-1.5 outline-2 rounded w-full"
-              placeholder="digite seu telefone"
+              placeholder="Digite seu telefone"
             />
           </div>
           <Button
             disabled={isSubmitting}
             className="w-full font-bold disabled:cursor-not-allowed"
           >
-            Atualizar
+            {isSubmitting ? (
+              <div className="flex  items-center justify-center">
+                <Loader2 className="size-6 animate-spin text-white" />
+              </div>
+            ) : (
+              "Atualizar"
+            )}
           </Button>
         </form>
       </section>

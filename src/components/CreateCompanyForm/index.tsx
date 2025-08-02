@@ -10,6 +10,7 @@ import { useMutation } from "@tanstack/react-query";
 import { getCep } from "@/api/get-cep";
 import { createCompany } from "@/api/create-company";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const CreateCompanyForm = () => {
   const {
@@ -74,7 +75,7 @@ export const CreateCompanyForm = () => {
             <Label>Nome da empresa</Label>
             <input
               type="text"
-              placeholder="digite o nome aqui"
+              placeholder="Digite o nome aqui"
               className="outline-2 rounded p-2 w-full border"
               {...register("name")}
             />
@@ -86,7 +87,7 @@ export const CreateCompanyForm = () => {
             <Label>Email da empresa</Label>
             <input
               type="email"
-              placeholder="digite o email aqui"
+              placeholder="Digite o email aqui"
               className="outline-2 rounded p-2 w-full border"
               {...register("email")}
             />
@@ -98,7 +99,7 @@ export const CreateCompanyForm = () => {
             <Label>CNPJ da empresa</Label>
             <input
               type="text"
-              placeholder="digite o CNPJ aqui"
+              placeholder="Digite o CNPJ aqui"
               className="outline-2 rounded p-2 w-full border"
               {...register("document")}
             />
@@ -111,7 +112,7 @@ export const CreateCompanyForm = () => {
             <input
               type="tel"
               {...register("phone")}
-              placeholder="digite o telefone aqui"
+              placeholder="Digite o telefone aqui"
               className="outline-2 rounded p-2 w-full border"
             />
             {errors.phone && (
@@ -123,7 +124,7 @@ export const CreateCompanyForm = () => {
             <input
               {...register("address.zipcode")}
               type="text"
-              placeholder="digite o CEP aqui"
+              placeholder="Digite o CEP aqui"
               className="outline-2 rounded p-2 w-full border"
               onBlur={() => getcepMutation.mutate()}
             />
@@ -136,7 +137,7 @@ export const CreateCompanyForm = () => {
             <input
               {...register("address.street")}
               type="text"
-              placeholder="digite a rua aqui"
+              placeholder="Digite a rua aqui"
               className="outline-2 rounded p-2 w-full border"
             />
             {errors.address?.street && (
@@ -148,7 +149,7 @@ export const CreateCompanyForm = () => {
             <input
               type="text"
               {...register("address.city")}
-              placeholder="digite a cidade aqui"
+              placeholder="Digite a cidade aqui"
               className="outline-2 rounded p-2 w-full border"
             />
             {errors.address?.city && (
@@ -160,7 +161,7 @@ export const CreateCompanyForm = () => {
             <input
               type="text"
               {...register("address.state")}
-              placeholder="digite o Estado aqui"
+              placeholder="Digite o Estado aqui"
               className="outline-2 rounded p-2 w-full border"
             />
             {errors.address?.state && (
@@ -172,7 +173,7 @@ export const CreateCompanyForm = () => {
             <input
               {...register("address.number")}
               type="text"
-              placeholder="digite o número aqui"
+              placeholder="Digite o número aqui"
               className="outline-2 rounded p-2 w-full border"
             />
             {errors.address?.number && (
@@ -184,7 +185,7 @@ export const CreateCompanyForm = () => {
             <input
               {...register("address.complement")}
               type="text"
-              placeholder="digite o complemento aqui"
+              placeholder="Digite o complemento aqui"
               className="outline-2 rounded p-2 w-full border"
             />
           </div>
@@ -194,7 +195,13 @@ export const CreateCompanyForm = () => {
               type="submit"
               className="w-full font-bold disabled:cursor-not-allowed"
             >
-              Cadastrar
+              {isSubmitting ? (
+                <div className="flex  items-center justify-center">
+                  <Loader2 className="size-6 animate-spin text-white" />
+                </div>
+              ) : (
+                "Cadastrar"
+              )}
             </Button>
           </div>
         </form>
