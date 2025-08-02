@@ -65,7 +65,7 @@ export const ListRegister = () => {
 
   return (
     <>
-      <span className="flex p-4 items-center justify-between  w-full ">
+      <span className="flex flex-col sm:flex-row gap-4 p-4 items-center justify-between  w-full ">
         <div className="outline-2 flex items-center rounded gap-1 p-1">
           <Search className="text-gray-400 size-5" />
           <input
@@ -103,14 +103,14 @@ export const ListRegister = () => {
       </span>
       <section className="w-full lg:min-h-screen mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4  gap-5 p-4">
         {registers.length === 0 && (
-          <span className="grid place-items-center col-span-full">
+          <span className="grid place-items-center col-span-full h-24">
             <p>Você não tem nenhum registro no momento!</p>
             <Button onClick={() => navigate("/records")} className="font-bold">
               Criar novo registro
             </Button>
           </span>
         )}
-        {filterRegisters.length === 0 && (
+        {registers.length > 0 && filterRegisters.length === 0 && (
           <span className="grid place-items-center col-span-full">
             <p>Não foi possivel encontrar esse registro</p>
           </span>
